@@ -23,5 +23,6 @@ export const booksSlice = createSlice({
 export const { createBook } = booksSlice.actions
 
 export const selectBooks = (state: RootState) => state.books.books
+export const selectBook = (state: RootState, bookId: number) => state.books.books.find(book => book.id === bookId)
 
 export default booksSlice.reducer
