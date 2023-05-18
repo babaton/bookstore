@@ -1,19 +1,38 @@
+import { Book } from '@/features/models';
 import React from 'react'
+import { useForm } from "react-hook-form";
+import TextField from './TextField';
+import Button from './Button';
 
-export default function BookDetails() {
+export interface BookDetailsProps {
+  book?: Book;
+  isCreate: Boolean;
+  onSubmit: (book: Book) => void;
+}
+
+export default function BookDetails(props: BookDetailsProps) {
+  const { register, handleSubmit } = useForm<Book>({
+    defaultValues: {
+      ...props.book
+    }
+  })
+
   return (
-    <form>
-        <label htmlFor="name">Name</label>
-        <input id="name" name="name"/>
+    <form onSubmit={handleSubmit(props.onSubmit)}>
+      <label htmlFor="name">Name</label>
+      <TextField id="name" {...register('name')} required />
 
-        <label htmlFor="price">Price</label>
-        <input id="price" name="price"/>
+      <label htmlFor="price">Price</label>
+      <TextField id="price" {...register('price')} required type="number" />
 
-        <label htmlFor="category">Category</label>
-        <input id="category" name="category"/>
+      <label htmlFor="category">Category</label>
+      <TextField id="category" {...register('category')} required />
 
-        <label htmlFor="description">Description</label>
-        <input id="description" name="description"/>
+      <label htmlFor="description">Description</label>
+      <TextField id="description" {...register('description')} required />
+      <Button className='w-full mt-4' type="submit">
+        {props.isCreate ? "Create" : "Update"}
+      </Button>
     </form>
   )
 }
