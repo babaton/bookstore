@@ -16,9 +16,7 @@ export default function BookLoader(props: BookLoaderProps) {
     const store = useStore<RootState>();
     useEffect(() => {
         try {
-            console.log('here')
             const booksStr = localStorage.getItem(SOTRAGE_KEY)
-            console.log(booksStr)
             if(booksStr) {
                 const books: Book[] = JSON.parse(booksStr)
                 dispatch(loadBooks(books))
