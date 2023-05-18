@@ -1,4 +1,3 @@
-import { useSelector } from 'react-redux'
 import BookList from '@/components/BookList'
 import Button from '@/components/Button'
 import Link from 'next/link'

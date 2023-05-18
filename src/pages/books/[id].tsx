@@ -8,7 +8,6 @@ import Link from 'next/link';
 import BookDetails from '@/components/BookDetails';
 import { Book } from '@/features/models';
 import { useAppDispatch } from '@/hooks';
-import BookLoader from '@/components/BookLoader';
 
 export default function BookDetailsPage() {
   const router = useRouter()
