@@ -4,9 +4,6 @@ import Button from '@/components/Button'
 import Link from 'next/link'
 
 export default function Home() {
-  useSelector(state => {
-    console.log(state)
-  })
   return (
     <main
       className="flex min-h-screen flex-col items-center p-24"

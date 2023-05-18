@@ -24,11 +24,14 @@ export const booksSlice = createSlice({
         deleteBook: (state, action: PayloadAction<number>) => {
             let idx = state.books.findIndex(book => book.id === action.payload)
             state.books.splice(idx, 1)
+        },
+        loadBooks: (state, action: PayloadAction<Book[]>) => {
+            state.books = action.payload
         }
     }
 })
 
-export const { createBook, updateBook, deleteBook } = booksSlice.actions
+export const { createBook, updateBook, deleteBook, loadBooks } = booksSlice.actions
 
 export const selectBooks = (state: RootState) => state.books.books
 export const selectBook = (state: RootState, bookId: number) => state.books.books.find(book => book.id === bookId)

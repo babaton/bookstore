@@ -8,6 +8,7 @@ import Link from 'next/link';
 import BookDetails from '@/components/BookDetails';
 import { Book } from '@/features/models';
 import { useAppDispatch } from '@/hooks';
+import BookLoader from '@/components/BookLoader';
 
 export default function BookDetailsPage() {
   const router = useRouter()
@@ -17,21 +18,20 @@ export default function BookDetailsPage() {
 
   const dispatch = useAppDispatch()
 
-  const handleSubmit =(book: Book) => {
+  const handleSubmit = (book: Book) => {
     dispatch(updateBook(book))
     router.push('/')
   }
 
-  if(!book) {
-    return <div>
-      <h1>Oops, Book Not found</h1>
-      <Link href="/"><Button>Go to Home </Button></Link>
-      </div>
-  }
-
   return (
     <div className='flex min-h-screen flex-col items-center p-24'>
-      <BookDetails book={book} isCreate={false} onSubmit={handleSubmit}/>
+      {book
+        ? (<BookDetails book={book} isCreate={false} onSubmit={handleSubmit} />)
+        : <>
+          <h1 className='text-xl my-4'>Oops, Book Not found</h1>
+          <Link href="/"><Button>Go to Home </Button></Link>
+        </>}
+
     </div>
   )
 }
