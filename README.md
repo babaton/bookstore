@@ -6,7 +6,7 @@ It supports the functionalities including:
 4. Click the "Create" button can navigate to a create page to create a new book
 
 The project uses Typescript and Redux(Redux toolkit) and Tailwind.
-It is deployed to [Vercel](https://bookstore-xi-puce.vercel.app/)
+It is deployed to [here](https://bookstore-xi-puce.vercel.app/)
 
 ## Install
 ```bash
