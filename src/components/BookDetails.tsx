@@ -19,12 +19,13 @@ export default function BookDetails(props: BookDetailsProps) {
   })
 
   return (
-    <form onSubmit={handleSubmit(props.onSubmit)}>
+    <form onSubmit={handleSubmit(props.onSubmit)} className='w-1/2'>
+      {props.isCreate && <h1 className='text-2xl my-8'>Create a new book</h1>}
       <label htmlFor="name">Name</label>
       <TextField id="name" {...register('name')} required />
 
       <label htmlFor="price">Price</label>
-      <TextField id="price" {...register('price')} required type="number" />
+      <TextField id="price" {...register('price')} required type="number" min={0}/>
 
       <label htmlFor="category">Category</label>
       <TextField id="category" {...register('category')} required />
