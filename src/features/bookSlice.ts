@@ -7,7 +7,7 @@ export interface BooksState {
 }
 
 const initialState: BooksState = {
-    books: [{ id: 1, name: 'first book', price: 10, category: 'test', description: 'test desc' }]
+    books: []
 }
 
 export const booksSlice = createSlice({
@@ -20,11 +20,15 @@ export const booksSlice = createSlice({
         updateBook: (state, action: PayloadAction<Book>) => {
             let idx = state.books.findIndex(book => book.id === action.payload.id)
             state.books[idx] = action.payload
+        },
+        deleteBook: (state, action: PayloadAction<number>) => {
+            let idx = state.books.findIndex(book => book.id === action.payload)
+            state.books.splice(idx, 1)
         }
     }
 })
 
-export const { createBook, updateBook } = booksSlice.actions
+export const { createBook, updateBook, deleteBook } = booksSlice.actions
 
 export const selectBooks = (state: RootState) => state.books.books
 export const selectBook = (state: RootState, bookId: number) => state.books.books.find(book => book.id === bookId)

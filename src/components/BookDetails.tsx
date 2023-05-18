@@ -3,6 +3,7 @@ import React from 'react'
 import { useForm } from "react-hook-form";
 import TextField from './TextField';
 import Button from './Button';
+import Link from 'next/link';
 
 export interface BookDetailsProps {
   book?: Book;
@@ -30,9 +31,10 @@ export default function BookDetails(props: BookDetailsProps) {
 
       <label htmlFor="description">Description</label>
       <TextField id="description" {...register('description')} required />
-      <Button className='w-full mt-4' type="submit">
+      <Button className='w-full my-4' type="submit">
         {props.isCreate ? "Create" : "Update"}
       </Button>
+      <Link href="/" ><Button className='w-full'>Back</Button></Link>
     </form>
   )
 }
